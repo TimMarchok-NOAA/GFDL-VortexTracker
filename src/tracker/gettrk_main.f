@@ -1228,6 +1228,8 @@ c       First, allocate the working data arrays....
 
         if (sstflag == 'y' .or. sstflag == 'Y') then
           allocate (sst(imax,jmax),stat=issta)
+          ! Initialize the sst array to missing values
+          sst   = -9999.0
         endif
 
         if (genflag == 'y') then
@@ -1237,6 +1239,12 @@ c       First, allocate the working data arrays....
           allocate (temperature(imax,jmax,nlevmoist)
      &             ,stat=itempa)
           allocate (omega500(imax,jmax),stat=iomegaa)
+          ! Initialize these newly allocated arrays to missing values
+          q850  = -9999.0
+          rh    = -9999.0
+          spfh  = -9999.0
+          temperature  = -9999.0
+          omega500  = -9999.0
         endif
       
         ita=0
@@ -1288,12 +1296,6 @@ c       then call subroutine to read data for this forecast time.
         v     = -9999.0
         slp   = -9999.0 
         tmean = -9999.0
-        sst   = -9999.0
-        q850  = -9999.0
-        rh    = -9999.0 
-        spfh  = -9999.0
-        temperature  = -9999.0
-        omega500  = -9999.0
 
         readflag    = .FALSE.
         readgenflag = .FALSE.

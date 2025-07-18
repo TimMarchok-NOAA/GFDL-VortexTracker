@@ -20,6 +20,8 @@ if (Fortran_COMPILER_NAME MATCHES "gfortran.*")
   set (CMAKE_Fortran_FLAGS "-Wall -Wextra")                 # gcc fortran compiler flags here
 elseif (Fortran_COMPILER_NAME MATCHES "ifx.*")
   set (CMAKE_Fortran_FLAGS "-fp-model=precise -i4 -r8")     # ifx fortran compiler flags here
+elseif (Fortran_COMPILER_NAME MATCHES "ifort.*")
+  set (CMAKE_Fortran_FLAGS "-fp-model precise -i4 -r8 -check bounds")     # ifort fortran compiler flags here
 endif()
 
 # debug mode

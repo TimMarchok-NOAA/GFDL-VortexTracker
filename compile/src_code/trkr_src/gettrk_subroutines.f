@@ -24395,6 +24395,12 @@ c       *------------------------------------------------------------*
             jpds(5)  = igparm(ip)
             jpds(6)  = iglevtyp(ip) 
             jpds(7)  = iglev(ip)
+            if (inp%model == 21 .and. ip == 9) then
+              ! Duct tape for the fact that ECMWF ensemble post files 
+              ! have the level type as 1 (surface) instead of 
+              ! 102 (msl).
+              jpds(6) = 1
+            endif
           endif 
 
           print *,' '
